@@ -5,8 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="16dp"
-    app:cardBackgroundColor="#FFE6E6"
-    app:cardCornerRadius="10dp">
+    app:cardBackgroundColor="#FFCCB3"
+    app:cardCornerRadius="15dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -20,13 +20,15 @@
             android:layout_marginTop="8dp"
             android:layout_marginBottom="16dp"
             android:clickable="true"
+            android:foreground="@drawable/baseline_double_arrow_24"
+            android:foregroundTint="#F675A8"
             android:rotation="-90"
-            android:src="@drawable/baseline_double_arrow_24"
-            app:backgroundTint="#E1AFD1"
+            app:backgroundTint="#554994"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/fabOrite"
+            app:layout_constraintEnd_toStartOf="@+id/fabDown"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            app:layout_constraintStart_toStartOf="@+id/ivGatete"
             app:layout_constraintTop_toBottomOf="@+id/ivGatete" />
 
         <ImageView
@@ -44,24 +46,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:clickable="true"
+            android:foreground="@drawable/baseline_double_arrow_24"
+            android:foregroundTint="#F675A8"
             android:rotation="90"
-            app:backgroundTint="#AD88C6"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/fabOrite"
-            app:layout_constraintTop_toTopOf="@+id/fabOrite"
-            app:srcCompat="@drawable/baseline_double_arrow_24" />
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fabOrite"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:clickable="true"
-            app:backgroundTint="#7469B6"
-            app:layout_constraintEnd_toStartOf="@+id/fabDown"
+            app:backgroundTint="#554994"
+            app:layout_constraintEnd_toEndOf="@+id/ivGatete"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/fabUp"
-            app:layout_constraintTop_toTopOf="@+id/fabUp"
-            app:srcCompat="@drawable/heart" />
+            app:layout_constraintTop_toTopOf="@+id/fabUp" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

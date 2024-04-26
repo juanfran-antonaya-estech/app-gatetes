@@ -52,6 +52,11 @@ class ListaGatosFragment : Fragment() {
 
         binding.rvListaGatos.adapter = adapter
         binding.rvListaGatos.layoutManager = layoutManager
+
+        binding.fabVotos.setOnClickListener{
+            viewModel.actualizarvotos()
+            findNavController().navigate(R.id.action_FirstFragment_to_tusVotosFragment)
+        }
     }
 
     override fun onDestroyView() {

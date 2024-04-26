@@ -17,19 +17,39 @@ class MyViewModel : ViewModel() {
 
     private val actualImageLiveData: MutableLiveData<ImagenGato> = MutableLiveData()
     private val actualBreedLiveData: MutableLiveData<Breed> = MutableLiveData()
+    private val votesLiveData: MutableLiveData<ArrayList<Votes>> = MutableLiveData()
+
+    /*
+    Estas funciones sirven para actualizar las fotos
+     */
+    fun actualizarvotos() {
+        viewModelScope.launch() {
+            val response = repo.dameVotos()
+            if (response.isSuccessful) {
+                votesLiveData.postValue(response.body())
+            }
+        }
+    }
+
+    fun observeVotos(): MutableLiveData<ArrayList<Votes>> {
+        return votesLiveData
+    }
+
 
     fun setRaza(raza: Breed) {
         actualBreedLiveData.value = raza
     }
+
     fun getRaza(): MutableLiveData<Breed> {
         return actualBreedLiveData
     }
 
+    //Esta funcion obtiene una imagen aleatoria para que se pueda observar con otra función
     fun setRandomImage(breed: String) {
         viewModelScope.launch {
             val response = repo.dameFotoRaza(breed)
 
-            if (response.isSuccessful){
+            if (response.isSuccessful) {
                 response.body()?.let {
                     actualImageLiveData.postValue(it[0])
                 }

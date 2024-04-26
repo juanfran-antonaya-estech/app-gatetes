@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="5dp">
+    android:layout_margin="5dp"
+    app:cardBackgroundColor="#FFCCB3">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -17,6 +18,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
+            android:fontFamily="@font/finger_paint"
             android:text="TextView"
             android:textAlignment="textStart"
             android:textAllCaps="false"

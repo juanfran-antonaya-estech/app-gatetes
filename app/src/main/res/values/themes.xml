@@ -6,6 +6,13 @@
         <item name="android:colorPrimary">#D7E4C0</item>
         <item name="android:color">#B3A398</item>
         <item name="android:textColor">#F675A8</item>
+        <item name="android:windowBackground">#554994</item>
+        <item name="colorAccent">#FFCCB3</item>
+        <item name="android:fontFamily">@font/finger_paint</item>
+    </style>
+
+    <style name="CardView.Pepito" parent="CardView">
+        <item name="cardBackgroundColor">#FFCCB3</item>
     </style>
 
     <style name="Theme.MyApplication" parent="Base.Theme.MyApplication" />
