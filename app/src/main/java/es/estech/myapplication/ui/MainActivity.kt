@@ -30,11 +30,10 @@ class MainActivity : AppCompatActivity() {
         navController = navHost.navController
         appBarConfiguration = AppBarConfiguration(navController.graph)
         setupActionBarWithNavController(navController, appBarConfiguration)
-
-        enableEdgeToEdge()
         binding.toolbar.setBackgroundColor(Color.parseColor("#F29393"))
         binding.toolbar.setTitleTextColor(Color.parseColor("#554994"))
 
+        enableEdgeToEdge()
         val window = this.window
 
         window.statusBarColor = Color.parseColor("#F29393")

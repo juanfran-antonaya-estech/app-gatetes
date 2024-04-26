@@ -36,5 +36,13 @@
         android:id="@+id/tusVotosFragment"
         android:name="es.estech.myapplication.ui.fragments.TusVotosFragment"
         android:label="Tus Votos"
-        tools:layout="@layout/fragment_tus_votos" />
+        tools:layout="@layout/fragment_tus_votos" >
+        <action
+            android:id="@+id/action_tusVotosFragment_to_SecondFragment"
+            app:destination="@id/SecondFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+    </fragment>
 </navigation>

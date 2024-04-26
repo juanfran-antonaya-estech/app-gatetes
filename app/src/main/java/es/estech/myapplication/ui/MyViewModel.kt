@@ -125,4 +125,17 @@ class MyViewModel : ViewModel() {
         return liveData
     }
 
+    fun setRazaPorFoto(imageId: String): MutableLiveData<Breed> {
+        viewModelScope.launch {
+            val response = repo.dameDetalles(imageId)
+            if (response.isSuccessful){
+                response.body()?.let {
+                    val detalleimagen = it
+                    actualBreedLiveData.postValue(detalleimagen.breeds[0])
+                }
+            }
+        }
+        return actualBreedLiveData
+    }
+
 }

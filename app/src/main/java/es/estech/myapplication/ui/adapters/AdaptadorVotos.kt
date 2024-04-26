@@ -7,10 +7,13 @@ import es.estech.myapplication.R
 import es.estech.myapplication.data.models.votes.Votes
 import es.estech.myapplication.databinding.HolderVotoBinding
 import es.estech.myapplication.ui.MyViewModel
+import es.estech.myapplication.ui.adapters.OnHolderClick
+import es.estech.myapplication.ui.adapters.OnImageClick
 import java.time.Instant
 import java.util.Date
+import java.util.EventListener
 
-class AdaptadorVotos(var listado: ArrayList<Votes>) :
+class AdaptadorVotos(var listado: ArrayList<Votes>,val listener: OnImageClick) :
     RecyclerView.Adapter<AdaptadorVotos.MiCelda>() {
 
         companion object {
@@ -55,6 +58,7 @@ class AdaptadorVotos(var listado: ArrayList<Votes>) :
                 Thread.sleep(500)
                 viewModel.actualizarvotos()
             }
+
             includ.fabDown.setOnClickListener{
                 viewModel.votarRaza(voto.imageId,voto.subId,-1)
                 Thread.sleep(500)
@@ -68,7 +72,9 @@ class AdaptadorVotos(var listado: ArrayList<Votes>) :
                 .placeholder(R.drawable.cargando)
                 .error(R.drawable.cuatrocerocuatro)
                 .into(includ.ivGatete)
-
+            includ.ivGatete.setOnClickListener{
+                listener.click(voto.imageId, position)
+            }
         }
 
     }

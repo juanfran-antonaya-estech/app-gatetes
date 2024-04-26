@@ -13,23 +13,27 @@
         android:layout_height="wrap_content"
         android:padding="16dp">
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
             android:id="@+id/fabUp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="16dp"
             android:clickable="true"
-            android:foreground="@drawable/baseline_double_arrow_24"
-            android:foregroundTint="#F675A8"
             android:rotation="-90"
             app:backgroundTint="#554994"
+            app:icon="@drawable/baseline_double_arrow_24"
+            app:iconTint="#F675A8"
+            app:iconTintMode="src_in"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/fabDown"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintHorizontal_chainStyle="spread_inside"
             app:layout_constraintStart_toStartOf="@+id/ivGatete"
-            app:layout_constraintTop_toBottomOf="@+id/ivGatete" />
+            app:layout_constraintTop_toBottomOf="@+id/ivGatete"
+            app:strokeColor="#F675A8"
+            app:strokeWidth="3dp" />
 
         <ImageView
             android:id="@+id/ivGatete"
@@ -41,19 +45,23 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
             android:id="@+id/fabDown"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
             android:clickable="true"
-            android:foreground="@drawable/baseline_double_arrow_24"
-            android:foregroundTint="#F675A8"
             android:rotation="90"
             app:backgroundTint="#554994"
+            app:icon="@drawable/baseline_double_arrow_24"
+            app:iconTint="#F675A8"
+            app:iconTintMode="src_in"
             app:layout_constraintEnd_toEndOf="@+id/ivGatete"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/fabUp"
-            app:layout_constraintTop_toTopOf="@+id/fabUp" />
+            app:layout_constraintTop_toTopOf="@+id/fabUp"
+            app:strokeColor="#F675A8"
+            app:strokeWidth="3dp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

@@ -13,5 +13,6 @@ class Repository {
     suspend fun votaRaza(voto: VoteSend) = retrogatos.votePhoto(voto)
     suspend fun eliminaRaza(id : Int) = retrogatos.eliminarVoto(id)
     suspend fun dameFotoRaza(raza : String) = retrogatos.imagenPorRaza(raza)
+    suspend fun dameDetalles(imageId : String) = retrogatos.detallesImage(imageId)
 
 }

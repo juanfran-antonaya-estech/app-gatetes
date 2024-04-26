@@ -19,16 +19,22 @@
 
         </androidx.recyclerview.widget.RecyclerView>
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
         android:id="@+id/fabVotos"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
         android:clickable="true"
-        android:foreground="@drawable/baseline_filter_24"
+        android:text="Mis votos"
+        android:textColor="#F675A8"
         app:backgroundTint="#554994"
+        app:icon="@drawable/baseline_filter_24"
+        app:iconTint="#F675A8"
+        app:iconTintMode="src_in"
         app:layout_constraintBottom_toBottomOf="@+id/rvListaGatos"
-        app:layout_constraintEnd_toEndOf="@+id/rvListaGatos" />
+        app:layout_constraintEnd_toEndOf="@+id/rvListaGatos"
+        app:strokeColor="#F675A8"
+        app:strokeWidth="3dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
