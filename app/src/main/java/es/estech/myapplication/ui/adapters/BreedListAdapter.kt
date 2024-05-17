@@ -1,5 +1,7 @@
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Filter
+import android.widget.Filterable
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import es.estech.myapplication.data.models.breeds.Breed
@@ -7,8 +9,9 @@ import es.estech.myapplication.databinding.HolderBreedsBinding
 import es.estech.myapplication.ui.adapters.OnHolderClick
 
 class BreedListAdapter(var listado: ArrayList<Breed>, val listener: OnHolderClick) :
-    RecyclerView.Adapter<BreedListAdapter.MiCelda>() {
+    RecyclerView.Adapter<BreedListAdapter.MiCelda>(), Filterable {
     //Your holder here
+        var listaCopia = ArrayList<Breed>()
     inner class MiCelda(var binding: HolderBreedsBinding) : RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MiCelda {
@@ -35,8 +38,38 @@ class BreedListAdapter(var listado: ArrayList<Breed>, val listener: OnHolderClic
         }
     }
 
-    private fun adaptRefToImg(name: String): String {
-        return "https://cdn2.thecatapi.com/images/${name}.jpg"
+    fun actualizarListado(listado: ArrayList<Breed>){
+        this.listado = listado
+        this.listaCopia = listado
+        notifyDataSetChanged()
+    }
+
+    override fun getFilter(): Filter {
+        return object : Filter(){
+            override fun performFiltering(constraint: CharSequence?): FilterResults {
+                val resultados = ArrayList<Breed>()
+                val busqueda = constraint.toString().lowercase().trim()
+                listaCopia.forEach {
+                    if(it.name != null){
+                        val name = it.name.lowercase()
+                        if(name.contains(busqueda)){
+                            resultados.add(it)
+                        }
+                    }
+                }
+
+                val filterResults = FilterResults()
+                filterResults.values = resultados
+                return filterResults
+            }
+
+            override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
+                val resultados = results?.values as ArrayList<Breed>
+                this@BreedListAdapter.listado = resultados
+                notifyDataSetChanged()
+            }
+
+        }
     }
 
 

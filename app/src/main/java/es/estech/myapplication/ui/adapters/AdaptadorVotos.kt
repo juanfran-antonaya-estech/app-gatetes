@@ -1,9 +1,12 @@
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Filter
+import android.widget.Filterable
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.squareup.picasso.Picasso
 import es.estech.myapplication.R
+import es.estech.myapplication.data.models.breeds.Breed
 import es.estech.myapplication.data.models.votes.Votes
 import es.estech.myapplication.databinding.HolderVotoBinding
 import es.estech.myapplication.ui.MyViewModel
@@ -15,6 +18,7 @@ import java.util.EventListener
 
 class AdaptadorVotos(var listado: ArrayList<Votes>,val listener: OnImageClick) :
     RecyclerView.Adapter<AdaptadorVotos.MiCelda>() {
+
 
         companion object {
             lateinit var viewModel : MyViewModel
@@ -77,6 +81,11 @@ class AdaptadorVotos(var listado: ArrayList<Votes>,val listener: OnImageClick) :
             }
         }
 
+    }
+
+    fun actualizarLista(votos: ArrayList<Votes>){
+        listado = votos
+        notifyDataSetChanged()
     }
 
 

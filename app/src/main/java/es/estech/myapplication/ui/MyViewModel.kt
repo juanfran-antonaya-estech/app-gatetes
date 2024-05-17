@@ -1,5 +1,6 @@
 package es.estech.myapplication.ui
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -10,7 +11,9 @@ import es.estech.myapplication.data.models.votes.VoteDeleteResponse
 import es.estech.myapplication.data.models.votes.VoteResponse
 import es.estech.myapplication.data.models.votes.VoteSend
 import es.estech.myapplication.data.models.votes.Votes
+import es.estech.myapplication.data.retrofit.ApiResult
 import kotlinx.coroutines.launch
+import java.lang.Exception
 
 class MyViewModel : ViewModel() {
     val repo = Repository()
@@ -61,18 +64,26 @@ class MyViewModel : ViewModel() {
         return actualImageLiveData
     }
 
-    fun dameRazas(): MutableLiveData<ArrayList<Breed>> {
-        val liveData = MutableLiveData<ArrayList<Breed>>()
+    fun dameRazas(): MutableLiveData<ApiResult<ArrayList<Breed>>> {
+        val liveData = MutableLiveData<ApiResult<ArrayList<Breed>>>()
+        liveData.postValue(ApiResult.Loading())
 
-        viewModelScope.launch {
-            val response = repo.dameRazas()
+        try {
+            viewModelScope.launch {
+                val response = repo.dameRazas()
 
-            if (response.code() == 200) {
-                response.body()?.let {
-                    liveData.postValue(it)
+                if (response.code() == 200) {
+                    response.body()?.let {
+                        liveData.postValue(ApiResult.Success(it))
+                    }
+                } else {
+                    val message = response.message()
+                    liveData.postValue(ApiResult.ApiError(message))
                 }
-            }
 
+            }
+        } catch ( e: Exception ) {
+            e.message?.let { Log.d("error", it) }
         }
 
         return liveData
@@ -128,7 +139,7 @@ class MyViewModel : ViewModel() {
     fun setRazaPorFoto(imageId: String): MutableLiveData<Breed> {
         viewModelScope.launch {
             val response = repo.dameDetalles(imageId)
-            if (response.isSuccessful){
+            if (response.isSuccessful) {
                 response.body()?.let {
                     val detalleimagen = it
                     actualBreedLiveData.postValue(detalleimagen.breeds[0])
